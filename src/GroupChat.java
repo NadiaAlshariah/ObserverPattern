@@ -12,6 +12,7 @@ public class GroupChat implements IObservable {
 
     public void add(IObserver observer){
         this.observers.add(observer);
+        System.out.println();
     }
     public void remove(IObserver observer) {
         this.observers.remove(observer);

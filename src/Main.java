@@ -43,12 +43,15 @@ public class Main {
             System.out.println("Enter username: ");
             User user = UserManager.getuser(scanner.nextLine());
             if(user!= null && groupChat!=null){
-                groupChat.add(user);
+                user.addToGroup(groupChat);
             }
         }
         else if(action == 4){
-            GroupChat groupChat = GroupManager.getGroupChat(scanner.next());
-            User user = UserManager.getuser(scanner.next());
+            System.out.println("Enter group name: ");
+            GroupChat groupChat = GroupManager.getGroupChat(scanner.nextLine());
+            System.out.println("Enter username: ");
+            User user = UserManager.getuser(scanner.nextLine());
+            System.out.println("Enter message: ");
             String message = scanner.nextLine();
             if(user!= null && groupChat!=null){
                 groupChat.setMessage(user.getUsername() + " said: " + message);

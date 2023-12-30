@@ -10,6 +10,7 @@ public class User implements IObserver{
     public void addToGroup(GroupChat groupChat){
         this.groupChat = groupChat;
         groupChat.add(this);
+        System.out.println(username + " has been added to group chat " + groupChat.getId());
     }
 
     public void update(String message){
