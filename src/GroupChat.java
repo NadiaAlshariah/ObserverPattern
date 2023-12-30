@@ -1,7 +1,14 @@
 import java.util.*;
 
 public class GroupChat implements IObservable {
-    List<IObserver> observers = new ArrayList<IObserver>();
+    private final String id;
+    List<IObserver> observers;
+    String message;
+
+    public GroupChat(String id){
+        this.id = id;
+        observers = new ArrayList<IObserver>();
+    }
 
     public void add(IObserver observer){
         this.observers.add(observer);
@@ -9,9 +16,22 @@ public class GroupChat implements IObservable {
     public void remove(IObserver observer) {
         this.observers.remove(observer);
     }
-    public void notification(){
+    public void notifyObservers(){
         for(IObserver observer: observers){
-            observer.update();
+            observer.update(message);
         }
+    }
+
+    public void messageChanged(){
+        notifyObservers();
+    }
+
+    public void setMessage(String message){
+        this.message = message;
+        messageChanged();
+    }
+
+    public String getId() {
+        return id;
     }
 }
